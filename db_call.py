@@ -5,9 +5,11 @@ import sys
 from datetime import datetime
 import seaborn as sns
 import matplotlib.pyplot as plt
+import shutil
+#import subprocess
 
 # Connect
-dbConnect = MySQLdb.connect('localhost','username','password','my_db')
+dbConnect = MySQLdb.connect('localhost','root','gtA7sC','my_db')
 cursor = dbConnect.cursor()
 
 # Query
@@ -18,7 +20,7 @@ rows = cursor.fetchall()
 data = cursor.fetchall()
 
 # save file
-csv_path = datetime.now().strftime("%Y-%m-%d.csv")
+csv_path = datetime.now().strftime("example.csv")
 
 dbConnect.close()
 
@@ -53,5 +55,11 @@ graph.set_ylabels("pages")
 
 graph.savefig('author_info', dpi=200)
 
-plt.show()
+#plt.show()
 
+# Move newly created files to new folder
+shutil.move('/Users/Mike_F/Documents/GitHub/scheduled_report-1/example.csv', 'C:/Users/Mike_F/Desktop/test_folder/example.csv')
+shutil.move('/Users/Mike_F/Documents/GitHub/scheduled_report-1/author_info.png', 'C:/Users/Mike_F/Desktop/test_folder/author_info.png')
+
+
+#subprocess.call(['cscript.exe', 'C:\\Users\\Mike_F\\Desktop\\outfile.vbs'])
