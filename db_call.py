@@ -9,7 +9,7 @@ import shutil
 #import subprocess
 
 # Connect
-dbConnect = MySQLdb.connect('localhost','root','gtA7sC','my_db')
+dbConnect = MySQLdb.connect('localhost','username','password','my_db')
 cursor = dbConnect.cursor()
 
 # Query
